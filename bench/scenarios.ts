@@ -258,7 +258,8 @@ export const BENCH_SCENARIOS: BenchScenario[] = [
     claims: 'All tests pass.',
     config: NPM_CONFIG,
     headFiles: {
-      'package.json': PACKAGE_JSON.replace('"test": "node --test"', '"test": "true"'),
+      // echo exists on both cmd.exe and POSIX shells; true does not exist on Windows.
+      'package.json': PACKAGE_JSON.replace('"test": "node --test"', '"test": "echo no tests"'),
     },
     expectedRules: ['test_script_disabled'],
   },
