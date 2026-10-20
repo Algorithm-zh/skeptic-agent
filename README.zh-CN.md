@@ -36,6 +36,12 @@ $ skeptic verify --claims "All tests pass. Fixes #42."
 不需要 API key，不需要外部服务。demo 会创建四个临时 git 仓库，四个 agent 都声称 **“All tests pass.”**。
 
 ```bash
+npx skeptic-agent demo
+```
+
+或者从源码运行：
+
+```bash
 git clone https://github.com/Algorithm-zh/skeptic-agent.git
 cd skeptic-agent
 npm ci
@@ -58,17 +64,14 @@ node dist/cli.js demo
 4/4 verdicts matched expectations
 ```
 
-npm 发布后，也可以直接运行 `npx skeptic-agent demo`。
-
 ## 在真实仓库中使用
 
 ```bash
-# 在当前源码目录中（或 npm 全局安装之后）
-node dist/cli.js init
+npx skeptic-agent init
 git add skeptic.yml .gitignore
 git commit -m "add skeptic verification contract"
 
-node dist/cli.js verify --claims "All tests pass. Fixes #42."
+npx skeptic-agent verify --claims "All tests pass. Fixes #42."
 ```
 
 `init` 会检测 `npm test` 并生成验证契约。Skeptic **只从 base revision 读取契约**，不会相信 agent 改动后的 `skeptic.yml`。如果还没提交契约就要验证，必须显式传入 `--trust-config`。

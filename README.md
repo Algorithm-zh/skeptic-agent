@@ -36,6 +36,12 @@ $ skeptic verify --claims "All tests pass. Fixes #42."
 No API key. No external service. The demo creates four temporary git repositories, where four agents make the same claim: **"All tests pass."**
 
 ```bash
+npx skeptic-agent demo
+```
+
+Or from source:
+
+```bash
 git clone https://github.com/Algorithm-zh/skeptic-agent.git
 cd skeptic-agent
 npm ci
@@ -58,17 +64,14 @@ Expected result:
 4/4 verdicts matched expectations
 ```
 
-After the npm release, the same demo is available as `npx skeptic-agent demo`.
-
 ## Use it on a real repository
 
 ```bash
-# From this checkout (or after npm install -g skeptic-agent)
-node dist/cli.js init
+npx skeptic-agent init
 git add skeptic.yml .gitignore
 git commit -m "add skeptic verification contract"
 
-node dist/cli.js verify --claims "All tests pass. Fixes #42."
+npx skeptic-agent verify --claims "All tests pass. Fixes #42."
 ```
 
 `init` detects `npm test` and writes a verification contract. Skeptic reads that contract from the **base git revision**, never from the agent's working tree. If you want to verify before committing the contract, pass `--trust-config` explicitly.
