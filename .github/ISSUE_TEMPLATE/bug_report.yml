@@ -1,0 +1,103 @@
+name: Bug report
+description: Something produced the wrong verdict, finding, or output.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Skeptic is a verification tool, so the most
+        useful reports include a minimal repository and the receipt.
+
+        Do not paste API keys or unredacted logs from private repositories.
+        Security vulnerabilities should go through the security policy instead.
+
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and configuration
+      description: The exact command you ran and the `skeptic.yml` used.
+      placeholder: |
+        skeptic verify --base main --head HEAD --claims "All tests pass."
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What verdict, finding, or output did you expect?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead? Include the verdict and relevant findings.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: |
+        Describe or link a minimal repository that reproduces the issue. If the
+        repository is private, summarize the relevant diff and config instead.
+      placeholder: |
+        1. Create a repo with ...
+        2. Add skeptic.yml ...
+        3. Run ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: receipt
+    attributes:
+      label: Receipt or report excerpt
+      description: Paste the relevant part of `receipt.json` or `report.md`, redacted as needed.
+      render: json
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: Skeptic version
+      description: Output of `skeptic --version`.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Linux
+        - macOS
+        - Windows
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: runtime
+    attributes:
+      label: Node.js, Git, and npm versions
+      description: Output of `node --version`, `git --version`, and `npm --version`.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I searched existing issues and did not find a duplicate.
+          required: true
+        - label: I reviewed the attached output for secrets and sensitive data.
+          required: true
+        - label: This is not a security vulnerability, or I have reported it privately.
+          required: true

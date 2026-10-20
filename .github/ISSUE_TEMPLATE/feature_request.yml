@@ -1,0 +1,60 @@
+name: Feature request
+description: Propose a rule, command, integration, or behavior change.
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Skeptic favors deterministic evidence over heuristics, and heuristics
+        over speculation. Feature requests that explain the failure mode they
+        catch, and how to test for it, are much easier to accept.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What can an agent do today that Skeptic fails to detect or explain?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: |
+        Describe the rule, check, command, or integration you want. If this is a
+        forensics rule, include the signal and its expected severity.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and fixture
+      description: |
+        How could this be demonstrated? A minimal diff, a test-framework output
+        sample, or a description of a fixture scenario is ideal.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Existing rules, external tools, or a narrower version of the request.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Design constraints
+      description: These constraints keep verdicts reproducible.
+      options:
+        - label: The proposal can be computed deterministically without an LLM.
+          required: true
+        - label: The proposal does not execute commands from claims or model output.
+          required: true
+        - label: I understand that a new rule needs a fixture and tests.
+          required: true

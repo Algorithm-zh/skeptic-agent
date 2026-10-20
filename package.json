@@ -1,0 +1,63 @@
+{
+  "name": "skeptic-agent",
+  "version": "0.1.0",
+  "description": "Independent verification for AI-written code. Evidence, not claims.",
+  "type": "module",
+  "bin": {
+    "skeptic": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE",
+    "docs"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "bench": "tsx bench/run.ts",
+    "smoke:pack": "node scripts/smoke-pack.mjs",
+    "demo": "npm run build && node dist/cli.js demo",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "ai-agents",
+    "agent-verification",
+    "code-review",
+    "testing",
+    "github-actions",
+    "cli",
+    "typescript",
+    "trust",
+    "ai-safety",
+    "developer-tools"
+  ],
+  "license": "MIT",
+  "author": "Skeptic contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Algorithm-zh/skeptic-agent.git"
+  },
+  "dependencies": {
+    "commander": "^15.0.0",
+    "diff": "^9.0.0",
+    "execa": "^10.2.0",
+    "picocolors": "^1.1.1",
+    "yaml": "^2.9.1",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsup": "^9.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/Algorithm-zh/skeptic-agent/security/advisories/new
+    about: Report vulnerabilities privately. Do not open a public issue.
+  - name: Documentation
+    url: https://github.com/Algorithm-zh/skeptic-agent/tree/main/docs
+    about: Design notes, threat model, and receipt format.
+  - name: Usage questions
+    url: https://github.com/Algorithm-zh/skeptic-agent/blob/main/README.md
+    about: Quickstart, commands, and configuration reference.
